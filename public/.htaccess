@@ -1,0 +1,31 @@
+# Zixpedia - Konfigurasi Apache untuk cPanel
+# Wajib ada agar URL artikel (/post/slug) dan /admin berfungsi di shared hosting.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Jangan proses file & folder yang benar-benar ada
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Arahkan semua rute lain ke index.html (SPA fallback)
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Kompresi untuk mempercepat pemuatan
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Cache aset statis hasil build (js/css/gambar)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
