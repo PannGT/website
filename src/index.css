@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Sora", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Navy scale untuk palet biru gelap Zixpedia */
+  --color-navy-50: #f0f5ff;
+  --color-navy-100: #e0ebff;
+  --color-navy-200: #c2d5fe;
+  --color-navy-300: #97b6fc;
+  --color-navy-400: #6b90f8;
+  --color-navy-500: #4a6ee0;
+  --color-navy-600: #3553c8;
+  --color-navy-700: #2c429c;
+  --color-navy-800: #1f2f63;
+  --color-navy-900: #121d3a;
+  --color-navy-925: #0d1628;
+  --color-navy-950: #080f1d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+::selection {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Scrollbar yang serasi dengan tema */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #2c429c;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  border-radius: 8px;
+}
